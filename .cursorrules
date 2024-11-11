@@ -1,0 +1,22 @@
+# 目的
+
+TODOアプリのツール開発
+
+# 要件
+
+- 検索機能
+- 登録機能
+- 更新機能
+- 削除機能
+
+# 環境
+
+API
+- Go
+- PostgreSQL
+- Docker
+
+WEB
+- TypeScript
+- React
+- Next.js
