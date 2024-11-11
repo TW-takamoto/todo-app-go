@@ -3,6 +3,7 @@ package database_test
 import (
 	"api/internal/shared/config"
 	"api/internal/shared/testutil"
+	"api/internal/usecase/interfaces"
 	"testing"
 
 	"api/internal/domain/model"
@@ -52,11 +53,11 @@ func TestTodoDatabaseQuery(t *testing.T) {
 	if !reflect.DeepEqual(res, todo) {
 		t.Errorf("expected %v, but got %v", todo, res)
 	}
-	//	res_, err := query.Find([]int64{id})
-	//	if err != nil {
-	//		t.Fatal(err)
-	//	}
-	//	if !reflect.DeepEqual(res_, todo) {
-	//		t.Errorf("expected %v, but got %v", todo, res_)
-	//	}
+	res_, err := query.Detail(interfaces.TodoDetailRequest{Id: id})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !reflect.DeepEqual(res_, todo) {
+		t.Errorf("expected %v, but got %v", todo, res_)
+	}
 }

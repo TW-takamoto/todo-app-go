@@ -15,7 +15,16 @@ type TodoDatabaseQuery struct {
 func (t TodoDatabaseQuery) Get() ([]model.Todo, error) {
 	var res []model.Todo
 	var dst []dto.TodoDto
-	err := t.pool.Select(&dst, "SELECT id, title, description, completed, created_at, updated_at FROM todos")
+	err := t.pool.Select(&dst, `
+		SELECT 
+			id, 
+			title, 
+			description, 
+			completed, 
+			created_at, 
+			updated_at 
+		FROM 
+			todos`)
 	if err != nil {
 		return nil, err
 	}
@@ -32,10 +41,19 @@ func (t TodoDatabaseQuery) Get() ([]model.Todo, error) {
 	return res, nil
 }
 
-func (d TodoDatabaseQuery) Detail(request interfaces.TodoDetailRequest) (model.Todo, error) {
+func (t TodoDatabaseQuery) Detail(request interfaces.TodoDetailRequest) (model.Todo, error) {
 	var res model.Todo
 	var dst dto.TodoDto
-	err := d.pool.Get(&dst, "SELECT id, title, description, completed FROM todos WHERE id = (?)", request.Id)
+	err := t.pool.Get(&dst, `
+		SELECT 
+			id, 
+			title, 
+			description, 
+			completed 
+		FROM 
+			todos 
+		WHERE 
+			id = (?)`, request.Id)
 	if err != nil {
 		return res, err
 	}

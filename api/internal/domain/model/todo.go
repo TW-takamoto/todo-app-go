@@ -11,8 +11,8 @@ type TodoProperties struct {
 	Completed   bool
 }
 
-func (d *TodoProperties) Build() Todo {
-	return Todo{d.Id, d.Title, d.Description, d.Completed}
+func (t *TodoProperties) Build() Todo {
+	return Todo{t.Id, t.Title, t.Description, t.Completed}
 }
 
 type Todo struct {
@@ -37,16 +37,10 @@ func (d *Todo) Completed() bool {
 
 func TodoBuilder(id int64, title string, description string, completed bool) (*TodoProperties, error) {
 	if id == 0 {
-		return &TodoProperties{}, e.ErrorBuilder(e.InvalidArgument).Property("token").Build()
+		return &TodoProperties{}, e.ErrorBuilder(e.InvalidArgument).Property("id").Build()
 	}
 	if title == "" {
 		return &TodoProperties{}, e.ErrorBuilder(e.InvalidArgument).Property("title").Build()
-	}
-	if description == "" {
-		return &TodoProperties{}, e.ErrorBuilder(e.InvalidArgument).Property("description").Build()
-	}
-	if completed == false {
-		return &TodoProperties{}, e.ErrorBuilder(e.InvalidArgument).Property("completed").Build()
 	}
 	return &TodoProperties{id, title, description, completed}, nil
 }
@@ -54,16 +48,10 @@ func TodoBuilder(id int64, title string, description string, completed bool) (*T
 func TodoFromRepository(id int64, title string, description string, completed bool) (Todo, error) {
 	var model Todo
 	if id == 0 {
-		return model, e.ErrorBuilder(e.InvalidArgument).Property("token").Build()
+		return model, e.ErrorBuilder(e.InvalidArgument).Property("id").Build()
 	}
 	if title == "" {
 		return model, e.ErrorBuilder(e.InvalidArgument).Property("title").Build()
-	}
-	if description == "" {
-		return model, e.ErrorBuilder(e.InvalidArgument).Property("description").Build()
-	}
-	if completed == false {
-		return model, e.ErrorBuilder(e.InvalidArgument).Property("completed").Build()
 	}
 	model = Todo{id, title, description, completed}
 	return model, nil

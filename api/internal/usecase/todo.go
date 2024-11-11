@@ -1,18 +1,18 @@
 package usecase
 
-//import (
-//	"practice/internal/domain/model"
-//	"practice/internal/usecase/interfaces"
-//)
+import (
+	"api/internal/domain/model"
+	"api/internal/usecase/interfaces"
+)
 
-//type TodosUsecase struct {
-//	todoQuery interfaces.TodoQuery
-//}
+type TodoUsecase struct {
+	todoQuery interfaces.TodoQuery
+}
 
-//func (d TodosUsecase) Execute(ids_ []int64) ([]model.Todo, error) {
-//	return d.todoQuery.Find(interfaces.TodoFindRequest{Ids: ids_})
-//}
+func (d TodoUsecase) Execute(request interfaces.TodoDetailRequest) (model.Todo, error) {
+	return d.todoQuery.Detail(request)
+}
 
-//func NewTodosUsecase(todoQuery interfaces.TodoQuery) TodosUsecase {
-//	return TodosUsecase{todoQuery: todoQuery}
-//}
+func NewTodoUsecase(todoQuery interfaces.TodoQuery) TodosUsecase {
+	return TodosUsecase{todoQuery: todoQuery}
+}

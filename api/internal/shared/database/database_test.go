@@ -7,10 +7,9 @@ import (
 	"api/internal/shared/database"
 )
 
-const url = "postgres://sa:Sa01@postgres/push_notification?sslmode=disable"
+const url = "postgres://sa:Sa01@postgres/todos?sslmode=disable"
 
 func TestPool(t *testing.T) {
-	t.Setenv("GOOGLE_APPLICATION_CREDENTIALS", "")
 	t.Setenv("DATABASE_URL", url)
 	config, err := config.NewConfigFromEnv()
 	if err != nil {
@@ -25,7 +24,6 @@ func TestPool(t *testing.T) {
 }
 
 func TestTx(t *testing.T) {
-	t.Setenv("GOOGLE_APPLICATION_CREDENTIALS", "")
 	t.Setenv("DATABASE_URL", url)
 	config, err := config.NewConfigFromEnv()
 	if err != nil {

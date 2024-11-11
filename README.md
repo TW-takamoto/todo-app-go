@@ -11,19 +11,7 @@
 
 ## 技術スタック
 
-### バックエンド (API)## プロジェクト構成
-
-.
-├── api/
-│   ├── cmd/
-│   ├── internal/
-│   │   ├── shared/
-│   │   └── todo/
-│   └── docker-compose.yml
-└── web/
-    ├── src/
-    ├── components/
-    └── pages/
+### バックエンド (API)
 
 - Go
 - PostgreSQL
@@ -70,10 +58,11 @@ docker-compose up -d
 </pre>
 
 ### WEBの起動
-
+<pre>
 cd web
 npm install
 npm run dev
+</pre>
 
 ## API エンドポイント
 
