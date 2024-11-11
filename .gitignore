@@ -1,0 +1,11 @@
+.env
+docker/.env
+node_modules
+dist
+coverage
+yarn.lock
+.bolt
+
+.vscode
+.devcontainer
+thunder-client
