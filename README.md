@@ -11,7 +11,19 @@
 
 ## 技術スタック
 
-### バックエンド (API)
+### バックエンド (API)## プロジェクト構成
+
+.
+├── api/
+│   ├── cmd/
+│   ├── internal/
+│   │   ├── shared/
+│   │   └── todo/
+│   └── docker-compose.yml
+└── web/
+    ├── src/
+    ├── components/
+    └── pages/
 
 - Go
 - PostgreSQL
@@ -24,31 +36,44 @@
 - Next.js
 
 ## プロジェクト構成
-
+<pre>
 .
 ├── api/
-│ ├── cmd/
-│ ├── internal/
-│ │ ├── shared/
-│ │ └── todo/
-│ └── docker-compose.yml
+│   ├── Dockerfile
+│   ├── docker-compose.yml
+│   ├── docs
+│   │   ├── docs.go
+│   │   ├── swagger.json
+│   │   └── swagger.yaml
+│   ├── go.mod
+│   ├── go.sum
+│   ├── internal
+│   │   ├── domain
+│   │   ├── infrastructure
+│   │   ├── interface_adapter
+│   │   ├── shared
+│   │   └── usecase
+│   ├── main.go
+│   └── migrations
 └── web/
-├── src/
-├── components/
-└── pages/
-
+    ├── src/
+    ├── components/
+    └── pages/
+</pre>
 
 ## セットアップ
 
 ### APIの起動
+<pre>
 cd api
 docker-compose up -d
+</pre>
 
 ### WEBの起動
+
 cd web
 npm install
 npm run dev
-
 
 ## API エンドポイント
 
