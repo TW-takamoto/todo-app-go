@@ -1,0 +1,40 @@
+services:
+  todo-api:
+    container_name: todo-api
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    env_file:
+      - ./api/.env
+    tty: true
+    volumes:
+      - ./:/usr/src:cache
+    ports:
+      - 8080:8080
+  todo-web:
+    container_name: todo-web
+    build:
+      context: .
+      dockerfile: web/Dockerfile.dev
+    env_file:
+      - ./web/.env
+    volumes:
+      - ./web:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: sa
+      POSTGRES_PASSWORD: Sa01
+      POSTGRES_DB: todo
+    ports:
+      - 5432:5432
+
+volumes:
+  postgres_data:

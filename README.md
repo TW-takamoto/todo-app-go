@@ -69,6 +69,7 @@ npm run dev
 | メソッド | エンドポイント | 説明 |
 |----------|----------------|------|
 | GET      | /api/todos     | タスク一覧の取得 |
+| GET      | /api/todos/:id | タスクの取得 |
 | POST     | /api/todos     | タスクの作成 |
 | PUT      | /api/todos/:id | タスクの更新 |
 | DELETE   | /api/todos/:id | タスクの削除 |

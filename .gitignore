@@ -5,6 +5,7 @@ dist
 coverage
 yarn.lock
 .bolt
+postgres_data
 
 .vscode
 .devcontainer
